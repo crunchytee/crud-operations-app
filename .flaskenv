@@ -1,1 +1,1 @@
-FLASK_APP=flask-practice.py
+FLASK_APP=flask_practice.py
