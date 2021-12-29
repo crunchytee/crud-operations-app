@@ -3,5 +3,8 @@ The following packages are required for this project:
 python3
 flask
 flask-sqlalchemy
+psycopg2-binary
+Flask-Migrate
+python-dotenv
 
 Oh, you thought I was going to include the versions? 
