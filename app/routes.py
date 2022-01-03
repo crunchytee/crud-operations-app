@@ -1,10 +1,19 @@
 from app import app
+from app.models import User
+from flask import request
 
-@app.route("/")
-@app.route("/index")
-def index():
-    return "Hello World!"
+@app.route("/all", methods=["GET"])
+def all():
+    users = User.query.all()
+    response = dict()
+    for u in users:
+        response[str(u.username)] = {"username": str(u.username), "email": str(u.email)}
+      
+    return {"users": response}, 200
 
-@app.route("/amazing")
-def amazing():
-    return "EPIC PAGE HERE"
+@app.route("/signup", methods=["POST"])
+def signup():
+    body = request.get_json()
+    response_username = body["username"]
+    response_password = body["password"]
+    return f"username = {response_username}, password = {response_password}"
