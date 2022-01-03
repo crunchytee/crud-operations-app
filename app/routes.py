@@ -14,6 +14,9 @@ def all():
 @app.route("/signup", methods=["POST"])
 def signup():
     body = request.get_json()
-    response_username = body["username"]
-    response_password = body["password"]
-    return f"username = {response_username}, password = {response_password}"
+    # response_username = body["username"]
+    # response_password = body["password"]
+    # with open("log.txt", "a") as o:
+    #     o.write(f"username = {response_username}, password = {response_password} \n")
+    # return f"username = {response_username}, password = {response_password}"
+    return "success"
