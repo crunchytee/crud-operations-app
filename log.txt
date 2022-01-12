@@ -1,1 +1,3 @@
-NoneNoneNoneNone
+type of body is: <class 'NoneType'>
+type of body is: <class 'dict'>
+type of body is: <class 'dict'>
