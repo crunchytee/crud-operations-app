@@ -20,6 +20,8 @@ def all():
 @app.route("/signup", methods=["POST"])
 def signup():
 
+    import pdb; pdb.set_trace()
+    
     # Get response from signup
     body = request.json
     response_username = body["username"]
