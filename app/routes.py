@@ -80,6 +80,4 @@ def delete():
         # User.query.filter_by(email=response_email).delete(response_email, synchronize_session = False)
     else: 
         return {"value": f"User {response_email} not found"}, 200
-    # Commit changes
-    db.session.commit()
     
