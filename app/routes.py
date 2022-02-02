@@ -1,11 +1,14 @@
 from crypt import methods
 from urllib import response
-from app import app, db
+from app import db
+# from crud_operations_app import app
 from app.models import User
-from flask import request
+from flask import request, Blueprint
+
+bp = Blueprint("routes", __name__)
 
 # GET all users
-@app.route("/all", methods=["GET"])
+@bp.route("/all", methods=["GET"])
 def all():
     # Query db for Users
     users = User.query.all()
@@ -19,7 +22,7 @@ def all():
     return {"users": response}, 200
 
 # POST a new user
-@app.route("/signup", methods=["POST"])
+@bp.route("/signup", methods=["POST"])
 def signup():
 
     # import pdb; pdb.set_trace()
@@ -44,7 +47,7 @@ def signup():
     return {"username": response_username, "password": response_password, "email address": response_email_address}, 200
 
 # Update a User
-@app.route("/edit", methods=["PUT"])
+@bp.route("/edit", methods=["PUT"])
 def edit():
     # Get data from edit request
     body = request.json
@@ -63,7 +66,7 @@ def edit():
     return {f"value": f"email: {response_email}, username: {response_username}, password: {response_password}"}, 200
 
 # Delete a user
-@app.route("/delete", methods=["DELETE"])
+@bp.route("/delete", methods=["DELETE"])
 def delete():
     # Get data from delete request
     body = request.json

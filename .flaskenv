@@ -1,1 +1,2 @@
-FLASK_APP=flask_practice.py
+FLASK_APP=crud_operations_app.py
+FLASK_ENV=development
