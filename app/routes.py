@@ -34,7 +34,8 @@ def signup():
     response_email_address = body["email-address"].lower()
 
     # Stage data for database
-    u = User(email=response_email_address, username=response_username, password_hash=response_password)
+    u = User(email=response_email_address, username=response_username)
+    u.set_password(response_password)
     db.session.add(u)
 
     # Commit new user to database
@@ -45,6 +46,27 @@ def signup():
     #     o.write(f"type of body is: {type(body)}\n")
     # return "complete", 200
     return {"username": response_username, "password": response_password, "email address": response_email_address}, 200
+
+# Login
+@bp.route("/login", methods=["POST"])
+def login():
+
+    # Get response from login form
+    body = request.json
+    response_email_address = body["email-address"]
+    response_password_hash = body["password"]
+
+    # Check submission against db
+    u = User.query.filter_by(email=response_email_address).first()
+
+    # If user or password wrong, return 401
+    if u is None or not u.check_password(response_password_hash):
+        return {"message": "Invalid username or password"}, 401
+    
+    # Here's where back end user session info would go
+    # something like login_user(user)
+    return {"message": "Logging in..."}, 200
+
 
 # Update a User
 @bp.route("/edit", methods=["PUT"])
