@@ -53,7 +53,7 @@ def test_signup(client):
 
     # Assertions
     assert result.username == "johndoe"
-    assert result.password_hash == "Password1!"
+    assert result.check_password("Password1!") == True
     assert result.email == "johndoe@gmail.com"
 
 def test_edit(client):
@@ -75,7 +75,7 @@ def test_edit(client):
 
     # Assertions
     assert user1Changed.username == "johndoe2"
-    assert user1Changed.password_hash == "Password1!2"
+    assert user1Changed.check_password("Password1!2") == True
     assert user1Changed.email == "johndoe@gmail.com"
 
 def test_delete(client):
