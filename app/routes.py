@@ -82,7 +82,7 @@ def edit():
         user_to_edit.username = response_username
     if (response_password != user_to_edit.password_hash):
         # To do: implement password hash
-        user_to_edit.password_hash = response_password
+        user_to_edit.set_password(response_password)
     db.session.commit()
     # import pdb; pdb.set_trace()
     return {f"value": f"email: {response_email}, username: {response_username}, password: {response_password}"}, 200
